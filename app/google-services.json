@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "882593804780",
+    "project_id": "matchtile-50dcb",
+    "storage_bucket": "matchtile-50dcb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882593804780:android:28984d8a32f2333aa710c9",
+        "android_client_info": {
+          "package_name": "game.match.tile.anipop.eliminating"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5TY5dgkEm4-5PAJiBqVBAI0OrxycWwYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
