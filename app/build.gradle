@@ -31,7 +31,7 @@ android {
 
 dependencies {
 //    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    implementation files('libs/Test2-debug.aar')
+    implementation files('libs/Test4-release.aar')
     implementation files('libs/libcocos2dx-release.aar')
 //    {
 //        exclude group: 'org.cocos2dx.okhttp3'
@@ -43,4 +43,10 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation 'com.google.android.gms:play-services-ads:22.4.0'
+
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime:2.5.1"
+    implementation 'androidx.lifecycle:lifecycle-process:2.5.1'
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.5.1"
+    implementation 'com.google.android.ump:user-messaging-platform:2.1.0'
 }

@@ -47,8 +47,6 @@ public class GameActivity extends AppActivity {
         mAdView.setAdSize(AdSize.BANNER);
 //        mAdView.setAdUnitId("ca-app-pub-2208951185660270/6236011992");
         mAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
-//        View view = new View(this);
-//        view.setBackgroundColor(Color.RED);
         ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mAdlayout = findViewById(R.id.fl_content_ad);
         mAdlayout.addView(mAdView, layoutParams);
