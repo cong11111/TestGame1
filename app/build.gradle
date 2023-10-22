@@ -31,7 +31,7 @@ android {
 
 dependencies {
 //    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    implementation files('libs/Test5-release.aar')
+    implementation files('libs/Test7-release.aar')
     implementation files('libs/libcocos2dx-release.aar')
 //    {
 //        exclude group: 'org.cocos2dx.okhttp3'

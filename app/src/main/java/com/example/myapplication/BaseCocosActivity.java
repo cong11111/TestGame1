@@ -23,7 +23,15 @@ public class BaseCocosActivity extends AppActivity {
 
     public void showAd() {
         if (mAdMgr != null) {
-            mAdMgr.showAd(BaseCocosActivity.this);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (isFinishing() || isDestroyed()){
+                        return;
+                    }
+                    mAdMgr.showAd(BaseCocosActivity.this);
+                }
+            });
         }
     }
 

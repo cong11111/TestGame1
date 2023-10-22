@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 public class NMProxyAD {
-
+//    org/cocos2dx/javascript/NMProxyAD
     private static HashSet<Activity> mSet = new HashSet<>();
 
     public static void addActivity(Activity activity) {
@@ -42,8 +42,17 @@ public class NMProxyAD {
 
     public static void LoadInterstitial() {
         Log.e("Test", "LoadInterstitial");
+        Activity curActivity = getCurActivity();
+        if (curActivity != null && !curActivity.isDestroyed()  && !curActivity.isFinishing()) {
+            if (curActivity instanceof BaseCocosActivity) {
+                Log.e("Test", "LoadInterstitial 3");
+                BaseCocosActivity cocosActivity = (BaseCocosActivity) curActivity;
+                cocosActivity.showAd();
+            }
+        }
     }
 
+//    callback: Function, blockerPrefabKey: string, blockDuration: number
     public static void ShowInterstitial() {
         Activity curActivity = getCurActivity();
         if (curActivity != null && !curActivity.isDestroyed()  && !curActivity.isFinishing()) {
@@ -54,6 +63,19 @@ public class NMProxyAD {
         }
         Log.e("Test", "ShowInterstitial");
     }
+
+    public static void ShowInterstitialWithBlocker() {
+        Activity curActivity = getCurActivity();
+        if (curActivity != null && !curActivity.isDestroyed()  && !curActivity.isFinishing()) {
+            if (curActivity instanceof BaseCocosActivity) {
+                BaseCocosActivity cocosActivity = (BaseCocosActivity) curActivity;
+                cocosActivity.showAd();
+            }
+        }
+        Log.e("Test", "ShowInterstitial");
+    }
+
+
 
     public static void IsRewardedVideoAvailable() {
         Log.e("Test", "IsRewardedVideoAvailable");
