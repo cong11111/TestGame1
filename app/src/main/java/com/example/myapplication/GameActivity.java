@@ -1,11 +1,10 @@
 package com.example.myapplication;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myapplication.ad.AdConfig;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -17,21 +16,16 @@ import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdOptions;
 
-import org.cocos2dx.javascript.AppActivity;
-
 import java.util.Arrays;
 
-public class GameActivity extends AppActivity {
+public class GameActivity extends BaseCocosActivity {
 
     private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        if (BuildConfig.DEBUG) {
-            RequestConfiguration.Builder configuration = new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("AA173640CF0F2070C2A45ACBC34A3819"));
-            MobileAds.setRequestConfiguration(configuration.build());
-        }
+
     }
 
     @Override
@@ -44,13 +38,11 @@ public class GameActivity extends AppActivity {
 
     private void tryAddAdView() {
         mAdView = new AdView(this);
-        mAdView.setAdSize(AdSize.BANNER);
-//        mAdView.setAdUnitId("ca-app-pub-2208951185660270/6236011992");
-        mAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+        mAdView.setAdSize(AdSize.FULL_BANNER);
+        mAdView.setAdUnitId(AdConfig.BANNER_AD_ID);
         ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mAdlayout = findViewById(R.id.fl_content_ad);
         mAdlayout.addView(mAdView, layoutParams);
-//        Log.e("Test", " test 111111111111111111111111");
         loadAdView();
     }
 
@@ -71,7 +63,9 @@ public class GameActivity extends AppActivity {
 
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
-                Log.e("Test", "" +adError.getMessage());
+                if (BuildConfig.DEBUG) {
+                    Log.e("Test", "" + adError.getMessage());
+                }
                 // Code to be executed when an ad request fails.
             }
 
@@ -119,4 +113,10 @@ public class GameActivity extends AppActivity {
 //        AdRequest adRequest = new AdRequest.Builder().build();
 //        mAdView.loadAd(adRequest);
 //    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

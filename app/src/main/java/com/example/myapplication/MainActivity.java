@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.google.android.gms.ads.AdListener;
@@ -12,9 +14,11 @@ import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 
+import org.cocos2dx.javascript.NMProxyAD;
+
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseCocosActivity {
 
     private AdView mAdView;
 
@@ -22,12 +26,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (BuildConfig.DEBUG) {
-            RequestConfiguration.Builder configuration = new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("AA173640CF0F2070C2A45ACBC34A3819"));
-            MobileAds.setRequestConfiguration(configuration.build());
-        }
         mAdView = findViewById(R.id.adView);
         loadAdView();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                NMProxyAD.ShowInterstitial();
+            }
+        }, 3000);
     }
 
     private void loadAdView(){
