@@ -26,5 +26,11 @@ public class AdConfig {
     }
     public static String APP_OPEN_AD_ID =
             Constant.NEED_BUILD_AAB ? AppOpenKey.RELEASE_AD_ID : AppOpenKey.TEST_AD_ID;
+    private static class RewardAdKey {
+        private static String RELEASE_AD_ID = "ca-app-pub-2208951185660270/5096553660";
+        private static String TEST_AD_ID = "ca-app-pub-3940256099942544/5224354917";
+    }
 
+    public static String REWARD_AD_ID =
+            Constant.NEED_BUILD_AAB ? RewardAdKey.RELEASE_AD_ID : RewardAdKey.TEST_AD_ID;
 }

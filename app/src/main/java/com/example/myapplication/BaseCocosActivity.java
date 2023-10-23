@@ -4,6 +4,7 @@ package com.example.myapplication;
 import android.os.Bundle;
 
 import com.example.myapplication.ad.InterstitialAdMgr;
+import com.example.myapplication.ad.RewardAdMgr;
 
 import org.cocos2dx.javascript.AppActivity;
 import org.cocos2dx.javascript.NMProxyAD;
@@ -12,12 +13,14 @@ public class BaseCocosActivity extends AppActivity {
 
 
     private InterstitialAdMgr mAdMgr;
+    private RewardAdMgr mRewardAdMgr;
 
     @Override
     protected void onCreate(Bundle bundle) {
         NMProxyAD.addActivity(this);
         super.onCreate(bundle);
         mAdMgr = new InterstitialAdMgr();
+        mRewardAdMgr = new RewardAdMgr();
         mAdMgr.preLoad(BaseCocosActivity.this);
     }
 
@@ -32,6 +35,12 @@ public class BaseCocosActivity extends AppActivity {
                     mAdMgr.showAd(BaseCocosActivity.this);
                 }
             });
+        }
+    }
+
+    public void showRewardAd() {
+        if (mAdMgr != null) {
+            mRewardAdMgr.preload(this);
         }
     }
 

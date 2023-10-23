@@ -32,7 +32,8 @@ public class MainActivity extends BaseCocosActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                NMProxyAD.ShowInterstitial();
+                showRewardAd();
+//                NMProxyAD.ShowInterstitial();
             }
         }, 3000);
     }
