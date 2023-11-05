@@ -13,7 +13,9 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.example.myapplication.global.App;
+import com.example.myapplication.global.Constant;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
@@ -46,6 +48,10 @@ public class AppOpenManager implements DefaultLifecycleObserver, Application.Act
     @Override
     public void onStart(@NonNull LifecycleOwner owner) {
         DefaultLifecycleObserver.super.onStart(owner);
+        boolean showFlag = SPUtils.getInstance().getBoolean(Constant.KEY_SHOW_AD_FLAG);
+        if (!showFlag) {
+            return;
+        }
         showAdIfAvailable();
     }
 

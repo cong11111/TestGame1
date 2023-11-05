@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Wipe it</string>
+    <string name="about_terms">Terms of Service</string>
+    <string name="about_privacy">Privacy Policy</string>
 </resources>

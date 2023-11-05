@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.example.myapplication.ad.AdConfig;
+import com.example.myapplication.global.Constant;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -37,6 +39,10 @@ public class GameActivity extends BaseCocosActivity {
     }
 
     private void tryAddAdView() {
+        boolean showFlag = SPUtils.getInstance().getBoolean(Constant.KEY_SHOW_AD_FLAG);
+        if (!showFlag) {
+            return;
+        }
         mAdView = new AdView(this);
         mAdView.setAdSize(AdSize.FULL_BANNER);
         mAdView.setAdUnitId(AdConfig.BANNER_AD_ID);

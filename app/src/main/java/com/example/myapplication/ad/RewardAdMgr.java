@@ -7,6 +7,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.example.myapplication.global.Constant;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.OnUserEarnedRewardListener;
@@ -20,6 +22,10 @@ public class RewardAdMgr {
     private RewardedAd rewardedAd;
 
     public void preload(Activity activity) {
+        boolean showFlag = SPUtils.getInstance().getBoolean(Constant.KEY_SHOW_AD_FLAG);
+        if (!showFlag) {
+            return;
+        }
         AdRequest adRequest = new AdRequest.Builder().build();
         RewardedAd.load(activity, REWARD_AD_ID,
                 adRequest, new RewardedAdLoadCallback() {
@@ -40,6 +46,10 @@ public class RewardAdMgr {
     }
 
     private void showAd(Activity activity) {
+        boolean showFlag = SPUtils.getInstance().getBoolean(Constant.KEY_SHOW_AD_FLAG);
+        if (!showFlag) {
+            return;
+        }
         rewardedAd.show(activity, new OnUserEarnedRewardListener() {
             @Override
             public void onUserEarnedReward(@NonNull RewardItem rewardItem) {

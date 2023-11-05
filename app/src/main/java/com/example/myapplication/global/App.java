@@ -1,6 +1,7 @@
 package com.example.myapplication.global;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.example.myapplication.BuildConfig;
 import com.example.myapplication.ad.AppOpenManager;
@@ -13,11 +14,13 @@ import java.util.Arrays;
 
 public class App extends Application {
 
+    public static Context mContext;
     private AppOpenManager openManager;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = getApplicationContext();
         openManager = new AppOpenManager(this);
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -27,6 +30,7 @@ public class App extends Application {
             RequestConfiguration.Builder configuration = new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("AA173640CF0F2070C2A45ACBC34A3819"));
             MobileAds.setRequestConfiguration(configuration.build());
         }
+        RemoteConfigMgr.INSTANCE.request();
     }
 
 }

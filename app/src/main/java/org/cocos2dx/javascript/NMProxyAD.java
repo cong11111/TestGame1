@@ -54,13 +54,13 @@ public class NMProxyAD {
 
 //    callback: Function, blockerPrefabKey: string, blockDuration: number
     public static void ShowInterstitial() {
-        Activity curActivity = getCurActivity();
-        if (curActivity != null && !curActivity.isDestroyed()  && !curActivity.isFinishing()) {
-            if (curActivity instanceof BaseCocosActivity) {
-                BaseCocosActivity cocosActivity = (BaseCocosActivity) curActivity;
-                cocosActivity.showAd();
-            }
-        }
+//        Activity curActivity = getCurActivity();
+//        if (curActivity != null && !curActivity.isDestroyed()  && !curActivity.isFinishing()) {
+//            if (curActivity instanceof BaseCocosActivity) {
+//                BaseCocosActivity cocosActivity = (BaseCocosActivity) curActivity;
+//                cocosActivity.showAd();
+//            }
+//        }
         Log.e("Test", "ShowInterstitial");
     }
 

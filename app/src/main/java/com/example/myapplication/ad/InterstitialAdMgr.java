@@ -5,6 +5,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.example.myapplication.global.Constant;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
@@ -17,6 +19,10 @@ public class InterstitialAdMgr {
     private static final String TAG = "InterstitialAdMgr";
 
     public void preLoad(Activity activity) {
+        boolean showFlag = SPUtils.getInstance().getBoolean(Constant.KEY_SHOW_AD_FLAG);
+        if (!showFlag) {
+            return;
+        }
         preLoad(activity, false);
     }
 
@@ -51,6 +57,10 @@ public class InterstitialAdMgr {
     }
 
     public void showAd(Activity activity) {
+        boolean showFlag = SPUtils.getInstance().getBoolean(Constant.KEY_SHOW_AD_FLAG);
+        if (!showFlag) {
+            return;
+        }
         if (mInterstitialAd == null) {
             preLoad(activity, true);
         } else {
